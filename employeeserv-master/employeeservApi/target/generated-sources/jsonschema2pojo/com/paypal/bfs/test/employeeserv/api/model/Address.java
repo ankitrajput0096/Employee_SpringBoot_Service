@@ -38,36 +38,36 @@ public class Address {
     @JsonPropertyDescription("line 2 of address")
     private String line2;
     /**
-     * city of employee
+     * city for address
      * (Required)
      * 
      */
     @JsonProperty("city")
-    @JsonPropertyDescription("city of employee")
+    @JsonPropertyDescription("city for address")
     private String city;
     /**
-     * state of employee
+     * state for address
      * (Required)
      * 
      */
     @JsonProperty("state")
-    @JsonPropertyDescription("state of employee")
+    @JsonPropertyDescription("state for address")
     private String state;
     /**
-     * country name
+     * country for address
      * (Required)
      * 
      */
     @JsonProperty("country")
-    @JsonPropertyDescription("country name")
+    @JsonPropertyDescription("country for address")
     private String country;
     /**
-     * state zip code
+     * state zip code for address
      * (Required)
      * 
      */
     @JsonProperty("zip_code")
-    @JsonPropertyDescription("state zip code")
+    @JsonPropertyDescription("state zip code for address")
     private Integer zipCode;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -111,7 +111,7 @@ public class Address {
     }
 
     /**
-     * city of employee
+     * city for address
      * (Required)
      * 
      */
@@ -121,7 +121,7 @@ public class Address {
     }
 
     /**
-     * city of employee
+     * city for address
      * (Required)
      * 
      */
@@ -131,7 +131,7 @@ public class Address {
     }
 
     /**
-     * state of employee
+     * state for address
      * (Required)
      * 
      */
@@ -141,7 +141,7 @@ public class Address {
     }
 
     /**
-     * state of employee
+     * state for address
      * (Required)
      * 
      */
@@ -151,7 +151,7 @@ public class Address {
     }
 
     /**
-     * country name
+     * country for address
      * (Required)
      * 
      */
@@ -161,7 +161,7 @@ public class Address {
     }
 
     /**
-     * country name
+     * country for address
      * (Required)
      * 
      */
@@ -171,7 +171,7 @@ public class Address {
     }
 
     /**
-     * state zip code
+     * state zip code for address
      * (Required)
      * 
      */
@@ -181,7 +181,7 @@ public class Address {
     }
 
     /**
-     * state zip code
+     * state zip code for address
      * (Required)
      * 
      */

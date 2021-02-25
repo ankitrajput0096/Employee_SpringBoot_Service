@@ -20,8 +20,10 @@
       "maxLength": 255
     },
     "date_of_birth": {
-      "description": "dob of an employee",
-      "type": "string"
+      "description": "dob of employee",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 16
     },
     "address": {
       "type": "object",
@@ -38,25 +40,25 @@
           "maxLength": 255
         },
         "city": {
-          "description": "city of employee",
+          "description": "city for address",
           "type": "string",
           "minLength": 1,
           "maxLength": 255
         },
         "state": {
-          "description": "state of employee",
+          "description": "state for address",
           "type": "string",
           "minLength": 1,
           "maxLength": 255
         },
         "country": {
-          "description": "country name",
+          "description": "country for address",
           "type": "string",
           "minLength": 1,
           "maxLength": 255
         },
         "zip_code": {
-          "description": "state zip code",
+          "description": "state zip code for address",
           "type": "integer"
         }
       },

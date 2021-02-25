@@ -1,3 +1,8 @@
+com/paypal/bfs/test/employeeserv/api/exceptions/handler/GenericApplicationHandler.class
+com/paypal/bfs/test/employeeserv/api/exceptions/handler/ApplicationErrorSchema$ApplicationErrorSchemaBuilder.class
+com/paypal/bfs/test/employeeserv/api/exceptions/handler/ApplicationErrorSchema.class
+com/paypal/bfs/test/employeeserv/api/exceptions/ApplicationException.class
 com/paypal/bfs/test/employeeserv/api/model/Address.class
+com/paypal/bfs/test/employeeserv/api/exceptions/ApplicationException$ApplicationExceptionBuilder.class
 com/paypal/bfs/test/employeeserv/api/EmployeeResource.class
 com/paypal/bfs/test/employeeserv/api/model/Employee.class

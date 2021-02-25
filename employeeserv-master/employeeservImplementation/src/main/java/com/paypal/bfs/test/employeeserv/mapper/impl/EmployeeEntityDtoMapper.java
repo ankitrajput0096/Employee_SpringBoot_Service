@@ -4,8 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.paypal.bfs.test.employeeserv.api.model.Address;
 import com.paypal.bfs.test.employeeserv.api.model.Employee;
 import com.paypal.bfs.test.employeeserv.entity.EmployeeEntity;
+import com.paypal.bfs.test.employeeserv.api.exceptions.ApplicationException;
 import com.paypal.bfs.test.employeeserv.mapper.MapperIface;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -13,55 +16,55 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Slf4j
 @Component
 public class EmployeeEntityDtoMapper implements MapperIface<EmployeeEntity, Employee> {
+
     @Autowired
     private ObjectMapper objectMapper;
 
     @Override
-    public EmployeeEntity toEntity(Employee employee) {
-
-        String sDate1=employee.getDateOfBirth();
-        Date date1 = null;
+    public EmployeeEntity toEntity(Employee employee) throws ApplicationException {
+        Date empDob = null;
         try {
-            date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
+            empDob = new SimpleDateFormat("dd/MM/yyyy").parse(employee.getDateOfBirth());
         } catch (ParseException e) {
-            e.printStackTrace();
+            log.error("The Date of birth format is not in appropriate " +
+                    "format, with exception : {}", e.getMessage());
+            throw new ApplicationException(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    e.getMessage());
         }
-
         String address = "";
         try {
-
-            address = objectMapper.writeValueAsString(employee.getAddress());
+            address = this.objectMapper.writeValueAsString(employee.getAddress());
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Exception during conversion of employee address to string : {}", e.getMessage());
+            throw new ApplicationException(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    e.getMessage());
         }
-
-
-
         EmployeeEntity employeeEntity = EmployeeEntity.builder()
                 .id(employee.getId())
                 .firstName(employee.getFirstName())
                 .lastName(employee.getLastName())
-                .dob(date1)
+                .dob(empDob)
                 .address(address)
                 .build();
-
-
         return employeeEntity;
     }
 
     @Override
-    public Employee toDto(EmployeeEntity employeeEntity) {
+    public Employee toDto(EmployeeEntity employeeEntity) throws ApplicationException {
         Employee employee = new Employee();
         employee.setId(employeeEntity.getId());
         employee.setFirstName(employeeEntity.getFirstName());
         employee.setLastName(employeeEntity.getLastName());
         employee.setDateOfBirth(employeeEntity.getDob().toString());
         try {
-            employee.setAddress(objectMapper.readValue(employeeEntity.getAddress(), Address.class));
+            employee.setAddress(this.objectMapper.readValue(employeeEntity.getAddress(), Address.class));
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Exception during conversion of employee address : {}", e.getMessage());
+            throw new ApplicationException(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    e.getMessage());
         }
         return employee;
     }

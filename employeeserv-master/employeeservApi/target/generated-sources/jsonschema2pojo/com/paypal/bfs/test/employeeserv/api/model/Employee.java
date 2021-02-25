@@ -52,12 +52,12 @@ public class Employee {
     @JsonPropertyDescription("last name")
     private String lastName;
     /**
-     * dob of an employee
+     * dob of employee
      * (Required)
      * 
      */
     @JsonProperty("date_of_birth")
-    @JsonPropertyDescription("dob of an employee")
+    @JsonPropertyDescription("dob of employee")
     private String dateOfBirth;
     /**
      * 
@@ -128,7 +128,7 @@ public class Employee {
     }
 
     /**
-     * dob of an employee
+     * dob of employee
      * (Required)
      * 
      */
@@ -138,7 +138,7 @@ public class Employee {
     }
 
     /**
-     * dob of an employee
+     * dob of employee
      * (Required)
      * 
      */
