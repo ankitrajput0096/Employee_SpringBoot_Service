@@ -1,0 +1,86 @@
+{
+  "title": "Employee resource",
+  "description": "Employee resource object",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "employee id",
+      "type": "integer"
+    },
+    "first_name": {
+      "description": "first name",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "last_name": {
+      "description": "last name",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "date_of_birth": {
+      "type": "object",
+      "properties": {
+        "day": {
+          "description": "day",
+          "type": "integer"
+        },
+        "month": {
+          "description": "month",
+          "type": "integer"
+        },
+        "year": {
+          "description": "year",
+          "type": "integer"
+        }
+      },
+      "required": ["day", "month", "year"]
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "line1": {
+          "description": "line 1 of address",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "line2": {
+          "description": "line 2 of address",
+          "type": "string",
+          "maxLength": 255
+        },
+        "city": {
+          "description": "city of employee",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "state": {
+          "description": "state of employee",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "country": {
+          "description": "country name",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "zip_code": {
+          "description": "state zip code",
+          "type": "integer"
+        }
+      },
+      "required": ["line1", "city", "state", "country", "zip_code"]
+    }
+  },
+  "required": [
+    "first_name",
+    "last_name",
+    "date_of_birth",
+    "address"
+  ]
+}
