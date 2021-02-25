@@ -52,12 +52,13 @@ public class Employee {
     @JsonPropertyDescription("last name")
     private String lastName;
     /**
-     * 
+     * dob of an employee
      * (Required)
      * 
      */
     @JsonProperty("date_of_birth")
-    private DateOfBirth dateOfBirth;
+    @JsonPropertyDescription("dob of an employee")
+    private String dateOfBirth;
     /**
      * 
      * (Required)
@@ -127,22 +128,22 @@ public class Employee {
     }
 
     /**
-     * 
+     * dob of an employee
      * (Required)
      * 
      */
     @JsonProperty("date_of_birth")
-    public DateOfBirth getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
     /**
-     * 
+     * dob of an employee
      * (Required)
      * 
      */
     @JsonProperty("date_of_birth")
-    public void setDateOfBirth(DateOfBirth dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

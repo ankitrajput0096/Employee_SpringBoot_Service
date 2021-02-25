@@ -20,22 +20,8 @@
       "maxLength": 255
     },
     "date_of_birth": {
-      "type": "object",
-      "properties": {
-        "day": {
-          "description": "day",
-          "type": "integer"
-        },
-        "month": {
-          "description": "month",
-          "type": "integer"
-        },
-        "year": {
-          "description": "year",
-          "type": "integer"
-        }
-      },
-      "required": ["day", "month", "year"]
+      "description": "dob of an employee",
+      "type": "string"
     },
     "address": {
       "type": "object",
