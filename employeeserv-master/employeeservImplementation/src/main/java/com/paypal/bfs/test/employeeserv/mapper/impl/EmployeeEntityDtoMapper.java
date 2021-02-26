@@ -24,6 +24,13 @@ public class EmployeeEntityDtoMapper
     @Autowired
     private ObjectMapper objectMapper;
 
+    /**
+     * Converts {@link Employee} class to {@link EmployeeEntity} class
+     *
+     * @param employee
+     * @return {@link EmployeeEntity}
+     * @throws ApplicationException
+     */
     @Override
     public EmployeeEntity toEntity(Employee employee)
             throws ApplicationException {
@@ -35,7 +42,7 @@ public class EmployeeEntityDtoMapper
             log.error("The Date of birth format is not in appropriate " +
                     "format, expected date format is 'dd/MM/yyyy' : {}", e.getMessage());
             throw new ApplicationException(HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                    e.getMessage());
+                    "The Date of birth format expected is 'dd/MM/yyyy', error msg: ".concat(e.getMessage()));
         }
         String address = "";
         try {
@@ -56,6 +63,13 @@ public class EmployeeEntityDtoMapper
         return employeeEntity;
     }
 
+    /**
+     * Converts {@link EmployeeEntity} class to {@link Employee} class
+     *
+     * @param employeeEntity
+     * @return {@link EmployeeEntity}
+     * @throws ApplicationException
+     */
     @Override
     public Employee toDto(EmployeeEntity employeeEntity)
             throws ApplicationException {

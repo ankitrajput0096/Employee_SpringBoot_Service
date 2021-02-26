@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.Objects;
 
-// Way to handle custom exceptions in spring boot application
 @ControllerAdvice
 public class GenericApplicationHandler extends ResponseEntityExceptionHandler {
 
