@@ -20,7 +20,8 @@ public interface EmployeeResource {
      * @return {@link Employee} resource.
      */
     @RequestMapping("/v1/bfs/employees/{id}")
-    ResponseEntity<Employee> employeeGetById(@PathVariable("id") final String id) throws ApplicationException;
+    ResponseEntity<Employee> employeeGetById(@PathVariable("id") final String id)
+            throws ApplicationException;
 
     /**
      * Creates the {@link Employee} resource in application
@@ -29,6 +30,7 @@ public interface EmployeeResource {
      * @return {@link Employee} resource.
      */
     @PostMapping("/v1/bfs/employees")
-    ResponseEntity<Employee> employeeCreation(@RequestBody final Employee employee) throws ApplicationException;
+    ResponseEntity<Employee> employeeCreation(@RequestBody final Employee employee)
+            throws ApplicationException;
 
 }

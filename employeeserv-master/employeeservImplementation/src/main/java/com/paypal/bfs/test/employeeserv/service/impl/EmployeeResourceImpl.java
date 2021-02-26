@@ -7,7 +7,6 @@ import com.paypal.bfs.test.employeeserv.api.exceptions.ApplicationException;
 import com.paypal.bfs.test.employeeserv.mapper.impl.EmployeeEntityDtoMapper;
 import com.paypal.bfs.test.employeeserv.repo.EmployeeRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,8 +28,10 @@ public class EmployeeResourceImpl implements EmployeeResource {
     private EmployeeEntityDtoMapper empEntityDtoMapper;
 
     @Override
-    public ResponseEntity<Employee> employeeGetById(String id) throws ApplicationException {
-        Optional<EmployeeEntity> emp = this.employeeRepository.findById(Integer.parseInt(id));
+    public ResponseEntity<Employee> employeeGetById(String id)
+            throws ApplicationException {
+        Optional<EmployeeEntity> emp = this.employeeRepository
+                .findById(Integer.parseInt(id));
         if (emp.isPresent())
             return ResponseEntity.ok().body(this.empEntityDtoMapper.toDto(emp.get()));
         else {

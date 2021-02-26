@@ -18,19 +18,22 @@ import java.util.Date;
 
 @Slf4j
 @Component
-public class EmployeeEntityDtoMapper implements MapperIface<EmployeeEntity, Employee> {
+public class EmployeeEntityDtoMapper
+        implements MapperIface<EmployeeEntity, Employee> {
 
     @Autowired
     private ObjectMapper objectMapper;
 
     @Override
-    public EmployeeEntity toEntity(Employee employee) throws ApplicationException {
+    public EmployeeEntity toEntity(Employee employee)
+            throws ApplicationException {
         Date empDob = null;
         try {
-            empDob = new SimpleDateFormat("dd/MM/yyyy").parse(employee.getDateOfBirth());
+            empDob = new SimpleDateFormat("dd/MM/yyyy")
+                    .parse(employee.getDateOfBirth());
         } catch (ParseException e) {
             log.error("The Date of birth format is not in appropriate " +
-                    "format, with exception : {}", e.getMessage());
+                    "format, expected date format is 'dd/MM/yyyy' : {}", e.getMessage());
             throw new ApplicationException(HttpStatus.INTERNAL_SERVER_ERROR.value(),
                     e.getMessage());
         }
@@ -38,7 +41,8 @@ public class EmployeeEntityDtoMapper implements MapperIface<EmployeeEntity, Empl
         try {
             address = this.objectMapper.writeValueAsString(employee.getAddress());
         } catch (IOException e) {
-            log.error("Exception during conversion of employee address to string : {}", e.getMessage());
+            log.error("Exception during conversion of " +
+                    "employee address to string : {}", e.getMessage());
             throw new ApplicationException(HttpStatus.INTERNAL_SERVER_ERROR.value(),
                     e.getMessage());
         }
@@ -53,18 +57,21 @@ public class EmployeeEntityDtoMapper implements MapperIface<EmployeeEntity, Empl
     }
 
     @Override
-    public Employee toDto(EmployeeEntity employeeEntity) throws ApplicationException {
+    public Employee toDto(EmployeeEntity employeeEntity)
+            throws ApplicationException {
         Employee employee = new Employee();
         employee.setId(employeeEntity.getId());
         employee.setFirstName(employeeEntity.getFirstName());
         employee.setLastName(employeeEntity.getLastName());
         employee.setDateOfBirth(employeeEntity.getDob().toString());
         try {
-            employee.setAddress(this.objectMapper.readValue(employeeEntity.getAddress(), Address.class));
+            employee.setAddress(this.objectMapper
+                    .readValue(employeeEntity.getAddress(), Address.class));
         } catch (IOException e) {
-            log.error("Exception during conversion of employee address : {}", e.getMessage());
-            throw new ApplicationException(HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                    e.getMessage());
+            log.error("Exception during conversion of " +
+                    "employee address : {}", e.getMessage());
+            throw new ApplicationException(HttpStatus
+                    .INTERNAL_SERVER_ERROR.value(), e.getMessage());
         }
         return employee;
     }
