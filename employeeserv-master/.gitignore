@@ -1,2 +1,9 @@
 *.iml
 .idea/
+
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### IntelliJ IDEA ###
+*.iws
+*.ipr
