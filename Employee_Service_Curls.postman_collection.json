@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "8b3f3ec7-1925-4cb0-ae53-8074c32e7c60",
+		"name": "Employee_Service_Curls",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/v1/bfs/employees/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/bfs/employees/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"bfs",
+						"employees",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/v1/bfs/employees",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"first_name\": \"Ankit\",\n    \"last_name\": \"Developer\",\n    \"date_of_birth\": \"31/12/1998\",\n    \"address\": {\n        \"line1\": \"House No: 14, 2nd Cross, Sai Nagar\",\n        \"line2\": \"Vidyaranyapura, Bangalore\",\n        \"city\": \"Bangalore\",\n        \"state\": \"Karnataka\",\n        \"country\": \"India\",\n        \"zip_code\": 560097\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/bfs/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"bfs",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
