@@ -8,7 +8,9 @@ import com.paypal.bfs.test.employeeserv.mapper.impl.EmployeeEntityDtoMapper;
 import com.paypal.bfs.test.employeeserv.repo.EmployeeRepository;
 import com.paypal.bfs.test.employeeserv.service.impl.EmployeeResourceServiceImpl;
 import com.paypal.bfs.test.employeeserv.test.utils.TestUtils;
+import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.math.RandomUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,6 +22,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.text.ParseException;
 import java.util.Optional;
+import java.util.Random;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -48,7 +51,7 @@ public class EmployeeResourceServiceTest {
      *     with requested details is present in DB.
      */
     @Test
-    public void employeeGetByIdTest()
+    public void employeeGetByIdTestSuccess()
             throws ParseException, ApplicationException, JsonProcessingException {
         // Test data
         Employee employeeTest = TestUtils.createTestEmployee();
@@ -79,8 +82,36 @@ public class EmployeeResourceServiceTest {
                 .getDateOfBirth());
     }
 
-    @After
-    public void tearDownAfterEachTestCase() {
-        verifyNoMoreInteractions(employeeRepository);
+
+    /**
+     * Method Name : employeeGetById
+     * Description : This testcase tests the scenario where Employee
+     *     with requested details is not present in DB.
+     */
+    @Test(expected = ApplicationException.class)
+    public void employeeGetByIdTestFailureOne()
+            throws ApplicationException {
+        // Date
+        Integer randomId = RandomUtils.nextInt(10000);
+
+        // Mocks
+        when(this.employeeRepository.findById(anyInt())).thenReturn(Optional
+                .ofNullable(null));
+
+        // The logic we're testing in this testcase
+        Employee testEmployee = this.employeeResourceService
+                .employeeGetById(randomId.toString());
+    }
+
+    /**
+     * Method Name : employeeGetById
+     * Description : This testcase tests the scenario where employee id is alphabetical.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void employeeGetByIdTestFailureTwo()
+            throws ApplicationException {
+        // The logic we're testing in this testcase
+        Employee testEmployee = this.employeeResourceService
+                .employeeGetById(RandomStringUtils.random(2, true, false));
     }
 }
