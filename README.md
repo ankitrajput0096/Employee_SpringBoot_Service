@@ -20,7 +20,7 @@ There are three modules in this application
 - Curl commands for the following operations:
 	- `curl --request GET 'http://localhost:8080/v1/bfs/employees/1'` - to fetch the employee resource from DB
 	- `curl --request POST 'http://localhost:8080/v1/bfs/employees' --header 'Content-Type: application/json' --data-raw '{
-	  "id": 2,
+	  "id": 1,
 	  "first_name": "Ankit",
 	  "last_name": "Developer",
 	  "date_of_birth": "31/12/1998",
