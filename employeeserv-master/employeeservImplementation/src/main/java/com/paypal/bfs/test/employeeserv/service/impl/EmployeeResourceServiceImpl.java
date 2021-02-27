@@ -27,9 +27,16 @@ public class EmployeeResourceServiceImpl implements EmployeeResourceService {
     @Autowired
     private EmployeeEntityDtoMapper empEntityDtoMapper;
 
+    /**
+     * Retrieves the {@link Employee} resource by id.
+     *
+     * @param id employee id.
+     * @return {@link Employee} resource.
+     */
     @Override
     public Employee employeeGetById(final String id)
             throws ApplicationException {
+        log.info("Received request to retrieve employee by id : {}", id);
         // adding validation for the request
         Preconditions.checkArgument(StringUtils.isNumeric(id),
                 "The employee id has to be numeric.");
@@ -46,9 +53,16 @@ public class EmployeeResourceServiceImpl implements EmployeeResourceService {
         }
     }
 
+    /**
+     * Creates the {@link Employee} resource in application
+     *
+     * @param employee {@link Employee} resource
+     * @return {@link Employee} resource.
+     */
     @Override
     public Employee employeeCreation(final Employee employee)
             throws ApplicationException {
+        log.info("Received request to create employee by id: {}", employee.getId());
         //adding validation for request
         Preconditions.checkArgument(!StringUtils.isEmpty(employee
                 .getFirstName()), "The employee first name cannot be empty");

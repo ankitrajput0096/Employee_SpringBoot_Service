@@ -4,7 +4,6 @@ import com.paypal.bfs.test.employeeserv.api.EmployeeResource;
 import com.paypal.bfs.test.employeeserv.api.exceptions.ApplicationException;
 import com.paypal.bfs.test.employeeserv.api.model.Employee;
 import com.paypal.bfs.test.employeeserv.service.EmployeeResourceService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Implementation class for employee resource.
  */
-@Slf4j
 @RestController
 public class EmployeeResourceImpl implements EmployeeResource {
 
@@ -21,7 +19,7 @@ public class EmployeeResourceImpl implements EmployeeResource {
     private EmployeeResourceService employeeResourceService;
 
     @Override
-    public ResponseEntity<Employee> employeeGetById(String id)
+    public ResponseEntity<Employee> employeeGetById(final String id)
             throws ApplicationException {
         return ResponseEntity.ok().body(this
                 .employeeResourceService.employeeGetById(id));

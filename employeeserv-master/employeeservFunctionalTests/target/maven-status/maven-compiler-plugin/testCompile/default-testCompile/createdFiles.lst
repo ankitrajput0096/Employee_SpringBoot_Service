@@ -1,1 +1,2 @@
-com/paypal/bfs/test/employeeserv/test/service/AppTest.class
+com/paypal/bfs/test/employeeserv/test/service/EmployeeResourceServiceTest.class
+com/paypal/bfs/test/employeeserv/test/utils/TestUtils.class

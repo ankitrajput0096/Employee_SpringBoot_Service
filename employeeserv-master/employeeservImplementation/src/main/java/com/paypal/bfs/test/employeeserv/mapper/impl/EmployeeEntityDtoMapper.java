@@ -42,7 +42,8 @@ public class EmployeeEntityDtoMapper
             log.error("The Date of birth format is not in appropriate " +
                     "format, expected date format is 'dd/MM/yyyy' : {}", e.getMessage());
             throw new ApplicationException(HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                    "The Date of birth format expected is 'dd/MM/yyyy', error msg: ".concat(e.getMessage()));
+                    "The Date of birth format expected is 'dd/MM/yyyy', error msg: "
+                            .concat(e.getMessage()));
         }
         String address = "";
         try {
