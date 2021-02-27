@@ -32,4 +32,3 @@ We would like you to enhance the existing project and see you complete the follo
 - [x] Response codes are as per rest guidelines.
 - [x] Error handling in case of failures.
 - [x] Idempotency logic is implemented to avoid duplicate resource
-All points completed.
