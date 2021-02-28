@@ -36,11 +36,10 @@ public class EmployeeResourceServiceImpl implements EmployeeResourceService {
     @Override
     public Employee employeeGetById(final String id)
             throws ApplicationException {
-        log.info("Received request to retrieve employee by id : {}", id);
         // adding validation for the request
         Preconditions.checkArgument(StringUtils.isNumeric(id),
                 "The employee id has to be numeric.");
-
+        log.info("Received request to retrieve employee by id : {}", id);
         Optional<EmployeeEntity> emp = this.employeeRepository
                 .findById(Integer.parseInt(id));
         if (emp.isPresent())
@@ -62,7 +61,7 @@ public class EmployeeResourceServiceImpl implements EmployeeResourceService {
     @Override
     public Employee employeeCreation(final Employee employee)
             throws ApplicationException {
-        log.info("Received request to create employee by id: {}", employee.getId());
+
         //adding validation for request
         Preconditions.checkArgument(!StringUtils.isEmpty(employee
                 .getFirstName()), "The employee first name cannot be empty");
@@ -78,7 +77,9 @@ public class EmployeeResourceServiceImpl implements EmployeeResourceService {
                 .getAddress().getCountry()), "The country cannot be empty");
         Preconditions.checkNotNull(employee.getAddress()
                 .getZipCode(), "The zipcode cannot be null");
-
+        Preconditions.checkNotNull(employee.getId(),
+                "The employee id cannot be null");
+        log.info("Received request to create employee by id: {}", employee.getId());
         // Handle scenario, when client don't add `line2` in request body
         if (Objects.isNull(employee.getAddress().getLine2())) {
             Address empAddress = employee.getAddress();
