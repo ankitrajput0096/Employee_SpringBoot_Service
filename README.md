@@ -16,7 +16,7 @@ There are three modules in this application
 ## Important Points
 - Assumption - I have assumed that each employee will have unique `employee-id`.
 - Use command `mvn clean install && mvn spring-boot:run -pl employeeservImplementation` to build and run the project directly from base folder.
-- Use command `java -jar employeeservImplementation/target/employeeservImplementation-0.0.1-SNAPSHOT-exe.jar` to run the application from packaged application jar file from base folder.
+- Also, use command `java -jar employeeservImplementation/target/employeeservImplementation-0.0.1-SNAPSHOT-exe.jar` to run the application from packaged application jar file from base folder after running the above command.
 - Curl commands for the following operations:
 	- `curl --request GET 'http://localhost:8080/v1/bfs/employees/1'` - to fetch the employee resource from DB
 	- `curl --request POST 'http://localhost:8080/v1/bfs/employees' --header 'Content-Type: application/json' --data-raw '{
